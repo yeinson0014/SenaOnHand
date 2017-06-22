@@ -5,7 +5,7 @@
 @section('title-content', 'Estados de publicaciones')
 
 @section('search-content')
-	<div class="col-4">
+	<div class="col-12">
 		<div class="search-content">
 		<!-- BUSCADOR -->
 		{!! Form::open(['route'=>'estados_publicaciones.index', 'method'=>'GET','class' => 'f-right form-search']) !!}

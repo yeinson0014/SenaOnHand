@@ -5,7 +5,7 @@
 @section('title-content', 'Tipos de documentos')
 
 @section('search-content')
-	<div class="col-4">
+	<div class="col-12">
 		<div class="search-content">
 		<!-- BUSCADOR -->
 		{!! Form::open(['route'=>'tipos_docs.index', 'method'=>'GET','class' => 'f-right form-search']) !!}
