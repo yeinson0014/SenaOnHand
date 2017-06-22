@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Categoria;
 use App\Http\Requests\RequestCategoria;
+use Storage;
 
 class CategoriasController extends Controller
 {
@@ -37,8 +38,27 @@ class CategoriasController extends Controller
      */
     public function store(RequestCategoria $request)
     {
-        $categorias = new Categoria($request->all());
-        $categorias->save();
+      // dd($request->all());
+
+      if ($request->hasFile('url_imagen') && $request->url_imagen->isValid()){
+        $imagen = $request->file('url_imagen');
+
+        $nombre = 'soh_profile_' . time() . '.'. $imagen->getClientOriginalExtension();
+
+        // dd($nombre);
+        // $path = $request->file('imagen')->storeAs('avatars', $nombre);
+        $path = Storage::putFileAs('public', $request->file('url_imagen'), $nombre);
+
+        $categoria = new Categoria();
+        $categoria->nombre = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
+
+        if ($path){
+          $categoria->url_imagen = $nombre;
+        }
+      }
+
+        $categoria->save();
        // Flash::success(' '.$tipos_denuncias->name.' se registro correctamente')->important();
         return '{ "estado": 1, "mensaje": "Registro creado"}';
     }

@@ -2,9 +2,9 @@
 
 @extends('template.layout')
 
-@include('template.h-navbar')
 
 @section('main')
+  @include('template.h-navbar')
     {{-- @if(Auth::user()->id == $sala->usuario_amigo_id)
       {{$sala->user_creador->nombres}} {{$sala->user_creador->apellidos}}
     @else
@@ -61,7 +61,7 @@
     {!! Form::hidden('sala_id', $sala->id) !!}
     <div class="row justify-content-center mt-4">
       <div class="col-8">
-        {!!Form::text('mensaje', null, ['id' => 'nombre', 'placeholder' => 'Escribir mensaje...', 'required', 'class' => 'material-input'])!!}
+        {!!Form::text('mensaje', $cad, ['id' => 'nombre', 'placeholder' => 'Escribir mensaje...', 'required', 'class' => 'material-input'])!!}
       </div>
       <div class="col-2">
         {!!Form::submit('Enviar', ['class'=>'material-btn btn-indigo'])!!}

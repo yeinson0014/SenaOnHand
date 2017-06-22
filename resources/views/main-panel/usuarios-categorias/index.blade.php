@@ -1,45 +1,48 @@
 @extends('template.layout')
 
-@include('template.h-navbar')
 
 @section('main')
+  @include('template.h-navbar') 
 <!-- Mostrar listado de categorias iniciales para que el usuario haga primeros pasos -->
 <div class="page-banner bg-indigo">
   <div class="container">
     <h1>
-      Sigue más categorias
+      Sigue más categorías
     </h1>
   </div>
 </div>
 
 <div class="container">
-  
+  <div class="row">
+    <div class="col-xs-12">
+      @include('flash::message')
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+
   <div class="row">
     @foreach($categorias as $categoria)
     <div class="col-xs-12 col-md-4">
-      <div class="card" style="width: 20rem;">
-        <!-- <div class="card-img-top" style="padding: 20px;">
-          <h1>HOla</h1>
-        </div> -->
-        <div class="card-block">
-          <h4 class="card-title"><span class="badge badge-default">{{$categoria->descripcion}}</span></h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          {!!Form::open(['route'=>'categoria-usuario.store', 'method' => 'POST'])!!}
-          {!!Form::hidden('categoria_id', $categoria->id)!!}
-          {!!Form::submit('Seguir', ['class'=>'btn btn-primary'])!!}
-          {!!Form::close()!!}
+      {!!Form::open(['route'=>'categoria-usuario.store', 'method' => 'POST', 'class' => 'material-card__big'])!!}
+        {!!Form::hidden('categoria_id', $categoria->id)!!}
+        <div class="card-header__image" style="background-image: url({{Storage::url($categoria->url_imagen)}})">
+          <h2 class="card-header__titulo"><a href="#">{{$categoria->nombre}}</a></h2>
         </div>
-      </div>
+        <p class="card__text">
+          {{$categoria->descripcion}}
+        </p>
+        <div class="card__action-bar">
+          {!!Form::submit('Seguir', ['class' => 'card__button'])!!}
+        </div>
+      {!!Form::close()!!}
     </div>
-
     @endforeach
 
   </div>
-  <div class="row mt-3">
-    <div class="col">
-      <div class="text-center">{{ $categorias->links('vendor.pagination.custom') }}</div>
-    </div>
-  </div>
+  
   <!-- <div class="row">
     <a href="{{route('main-panel')}}" class=" btn btn-danger btn-block">Saltar este paso</a>
   </div> -->

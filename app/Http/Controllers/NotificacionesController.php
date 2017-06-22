@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Notifications\DatabaseNotification;
+use Auth;
 
 class NotificacionesController extends Controller
 {
@@ -19,6 +20,10 @@ class NotificacionesController extends Controller
      */
     public function index()
     {
+        
+        if (request()->ajax()) {
+            return auth()->user()->unreadNotifications;
+        }
         $noleidas = auth()->user()->unreadNotifications;
         $leidas = auth()->user()->readNotifications;
         return view ('main-panel.notificaciones.index', compact('noleidas', 'leidas'));
@@ -88,9 +93,14 @@ class NotificacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-      // dd('Actualizando...');
       DatabaseNotification::find($id)->markAsRead();
-      return back();
+
+      if (request()->ajax()) {
+          return Auth::user()->unreadNotifications;
+      }
+
+
+      return redirect($request['enlace']);
     }
 
     /**
