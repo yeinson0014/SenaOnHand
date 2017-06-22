@@ -1,11 +1,14 @@
-{{-- llama main blade --}}
+
 @extends('template.admin')
-{{-- seteamos el titulo --}}
+
 @section('title','Programas')
 
-{{-- titulo del contenido --}}
+
 @section('title-content', 'Programas')
-{{-- poner el buscar al lado del titulo --}}
+
+
+
+
 @section('search-content')
   <!-- BUSCADOR -->
   <div class="col-12">

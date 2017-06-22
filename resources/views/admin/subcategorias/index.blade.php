@@ -18,6 +18,8 @@
       </span>
     </div>
     {!!Form::close() !!}
+    </div>
+    </div>
     <!--  FIN BUSCADOR -->
     </div>
     </div>

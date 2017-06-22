@@ -15,7 +15,7 @@
     <div class="col-sm-2 col-md-2" style="padding-right:0px;">
       <div style="min-height: calc(100vh - 62px);max-height: calc(100vh - 62px);overflow-y: scroll;">
         @include('template.v-navbar')
-      </div>
+     </div>
     </div>
     <div class="col-sm-10 col-md-10">
       <div class="container pt-5">
