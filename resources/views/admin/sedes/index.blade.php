@@ -17,10 +17,10 @@
             <i class="fa fa-search"></i>
         </span>
   	</div>
-  	</div>
-  	</div>
+
   	{!!Form::close() !!}
-  
+  </div>
+  </div>
   <!--  FIN BUSCADOR -->
 @endsection
 
